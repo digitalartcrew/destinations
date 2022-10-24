@@ -4,7 +4,6 @@ require("dotenv").config();
 mongoose
   .connect(process.env.DATABASE, {
     useNewUrlParser: true,
-    directConnection: true,
   })
   .then(() => console.log("Database Connected"))
   .catch((e) => {
