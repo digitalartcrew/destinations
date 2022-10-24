@@ -54,7 +54,7 @@ const updateDestination = async (req, res) => {
     destination.title = body.title || destination.title;
     destination.location = body.location || destination.location;
     destination.description = body.description || destination.description;
-    destination.imageUrl = body.imageUrl || ;
+    destination.imageUrl = body.imageUrl || destination.imageUrl;
 
     destination
       .save()
