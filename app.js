@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
     .find()
     .toArray()
     .then((results) => res.render("index.ejs", { destinations: results }))
-    .catch((err) => console.error("We have an error: ", err));
+    .catch((err) => res.render("Yo an errror occured", err));
 });
 
 app.use("/api", DestinationRouter);
