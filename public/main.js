@@ -27,8 +27,19 @@ addDestinationForm.addEventListener("submit", (e) => {
 
 const update = document.querySelector("#update-button");
 
-if (!!update) {
-}
+$("#updateModal").on("show.bs.modal", async function (e) {
+  const id = e.target.getAttribute("data-id");
+  const data = await fetch(`/api/destination/${id}`);
+  const results = await data.json();
+
+  const { title, location, description, imageUrl } = results.data;
+
+  document.querySelector("input#update-title").value = title;
+  document.querySelector("input#update-location").value = location;
+  document.querySelector("textarea#update-description").value = description;
+  document.querySelector("input#update-imageUrl").value = imageUrl;
+});
+
 update?.addEventListener("click", (e) => {
   const id = e.target.getAttribute("data-id");
   debugger;

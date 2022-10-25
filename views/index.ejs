@@ -22,7 +22,6 @@
   </header>
   <main>
   </head>
-  <body>
     <div class="container">
       <div class="row">
         <div class="col-md-3">
@@ -84,7 +83,7 @@
                                 </div><!-- Button trigger modal -->
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" data-id="<%= destinations[i]._id %>" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -92,7 +91,27 @@
                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                      ...
+                                      <form id="updateForm">
+                                        <div class="form-group">
+                                          <label for="title">Title</label>
+                                          <input type="text" class="form-control" id="update-title" aria-describedby="title" placeholder="">
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="location">Location</label>
+                                          <input type="text" class="form-control" id="update-location" aria-describedby="location" placeholder="">
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="description">Description</label>
+                                          <textarea type="text" class="form-control" id="update-description" aria-describedby="description" placeholder=""></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="imageUrl">Image Url</label>
+                                          <input type="text" class="form-control" id="update-imageUrl" aria-describedby="imageUrl" placeholder="">
+                                        </div>
+                                      </form>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -108,15 +127,10 @@
                     </div>
                 <% } %>
           </div>
-
-  
-
-            
         </div>
       </div>
     </div>
-    <script src="/main.js"></script>
-  </body>
+
 
   </main>
   <footer>
@@ -130,6 +144,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="/main.js"></script>
 </body>
 
 </html>
