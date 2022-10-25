@@ -13,7 +13,6 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
-// test
 app.use(bodyParser.json());
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));

@@ -4,13 +4,10 @@ const addDestinationForm = document.querySelector("#destination-form");
 addDestinationForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  //   const formData = new FormData(addDestinationForm);
-
   const title = document.querySelector("#name").value;
   const location = document.querySelector("#location").value;
   const description = document.querySelector("#description").value;
   const imageUrl = document.querySelector("#imageUrl").value;
-  debugger;
 
   fetch("/api/destination/create", {
     method: "POST",
@@ -27,8 +24,10 @@ addDestinationForm.addEventListener("submit", (e) => {
 
 const update = document.querySelector("#update-button");
 
-$("#updateModal").on("show.bs.modal", async function (e) {
-  const id = e.target.getAttribute("data-id");
+const myModalEl = document.getElementById("updateModal");
+
+myModalEl.addEventListener("show.bs.modal", async (event) => {
+  const id = event.target.getAttribute("data-id");
   const data = await fetch(`/api/destination/${id}`);
   const results = await data.json();
 
