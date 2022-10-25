@@ -42,15 +42,18 @@ $("#updateModal").on("show.bs.modal", async function (e) {
 
 update?.addEventListener("click", (e) => {
   const id = e.target.getAttribute("data-id");
-  debugger;
+
+  const title = document.querySelector("input#update-title").value;
+  const location = document.querySelector("input#update-location").value;
+  const description = document.querySelector(
+    "textarea#update-description"
+  ).value;
+  const imageUrl = document.querySelector("input#update-imageUrl").value;
 
   fetch(`/api/destination/update/${id}`, {
     method: "put",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      name: "Darth Vader",
-      quote: "I find your lack of faith disturbing.",
-    }),
+    body: JSON.stringify({ title, location, description, imageUrl }),
   })
     .then((res) => {
       if (res.ok) return res.json();
