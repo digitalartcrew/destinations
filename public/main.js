@@ -27,8 +27,11 @@ addDestinationForm.addEventListener("submit", (e) => {
 
 const update = document.querySelector("#update-button");
 
-update.addEventListener("click", (e) => {
-  const id = e.target.parentNode.getAttribute("data-id");
+if (!!update) {
+}
+update?.addEventListener("click", (e) => {
+  const id = e.target.getAttribute("data-id");
+  debugger;
 
   fetch(`/api/destination/update/${id}`, {
     method: "put",
@@ -48,8 +51,8 @@ update.addEventListener("click", (e) => {
 
 const deleteButton = document.querySelector("#delete-button");
 
-deleteButton.addEventListener("click", (e) => {
-  const id = e.target.parentNode.getAttribute("data-id");
+deleteButton?.addEventListener("click", (e) => {
+  const id = e.target.getAttribute("data-id");
 
   fetch(`/api/destination/delete/${id}`, {
     method: "delete",
