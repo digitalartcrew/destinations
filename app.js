@@ -23,7 +23,9 @@ app.get("/", (req, res) => {
     .toArray()
     .then((results) => {
       results.map((res, index) => {
-        res.modalId = `modal-${res._id}`;
+        // helper props
+        res.updateModalId = `modal-update-${res._id}`;
+        res.deleteModalId = `modal-delete-${res._id}`;
         res.entityIndex = index;
 
         return res;

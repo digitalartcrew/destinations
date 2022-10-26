@@ -57,14 +57,14 @@
                             <p class="card-text"><%= destinations[i].description %></p>
                             <div class="buttons_container">
                               
-                                <button data-bs-toggle="modal" data-bs-target="#<%= destinations[i].modalId %>" class="btn btn-warning">Update</button>
+                                <button data-bs-toggle="modal" data-bs-target="#<%= destinations[i].updateModalId  %>" class="btn btn-warning">Update</button>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= destinations[i].modalId %>">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= destinations[i].deleteModalId  %>">
                                 Delete
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="<%= destinations[i].modalId %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade"id="<%= destinations[i].deleteModalId %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
                                       <div class="modal-header">
@@ -83,7 +83,7 @@
                                 </div><!-- Button trigger modal -->
 
                                 <!-- Modal -->
-                                <div class="modal fade" data-id="<%= destinations[i]._id %>" id="<%= destinations[i].modalId %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" data-id="<%= destinations[i]._id %>" id="<%= destinations[i].updateModalId %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
