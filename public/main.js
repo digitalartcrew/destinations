@@ -22,44 +22,52 @@ addDestinationForm.addEventListener("submit", (e) => {
     });
 });
 
-const update = document.querySelector("#update-button");
+// Current on the modal
+// const myModalEl = document.getElementById("updateModal");
 
-const myModalEl = document.getElementById("updateModal");
+// myModalEl.addEventListener("show.bs.modal", async (event) => {
+//   debugger;
+//   const id = event.target.getAttribute("data-id");
+//   const data = await fetch(`/api/destination/${id}`);
+//   const results = await data.json();
+//   const { title, location, description, imageUrl } = results.data;
 
-myModalEl.addEventListener("show.bs.modal", async (event) => {
-  const id = event.target.getAttribute("data-id");
-  const data = await fetch(`/api/destination/${id}`);
-  const results = await data.json();
+//   document.querySelector("input#update-title").value = title;
+//   document.querySelector("input#update-location").value = location;
+//   document.querySelector("textarea#update-description").value = description;
+//   document.querySelector("input#update-imageUrl").value = imageUrl;
+// });
 
-  const { title, location, description, imageUrl } = results.data;
+const updateBtn = document.querySelectorAll(".update");
 
-  document.querySelector("input#update-title").value = title;
-  document.querySelector("input#update-location").value = location;
-  document.querySelector("textarea#update-description").value = description;
-  document.querySelector("input#update-imageUrl").value = imageUrl;
-});
+updateBtn?.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    const id = e.target.getAttribute("data-id");
+    const idx = e.target.getAttribute("data-entity-index");
+    debugger;
 
-update?.addEventListener("click", (e) => {
-  const id = e.target.getAttribute("data-id");
+    const title = document.querySelectorAll(".update-title")[idx].value;
+    const location = document.querySelectorAll(".update-location")[idx].value;
+    const description = document.querySelectorAll(".update-description")[idx]
+      .value;
+    const imageUrl = document.querySelectorAll(".update-imageUrl")[idx].value;
 
-  const title = document.querySelector("input#update-title").value;
-  const location = document.querySelector("input#update-location").value;
-  const description = document.querySelector(
-    "textarea#update-description"
-  ).value;
-  const imageUrl = document.querySelector("input#update-imageUrl").value;
+    debugger;
 
-  fetch(`/api/destination/update/${id}`, {
-    method: "put",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title, location, description, imageUrl }),
-  })
-    .then((res) => {
-      if (res.ok) return res.json();
+    fetch(`/api/destination/update/${id}`, {
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, location, description, imageUrl }),
     })
-    .then((response) => {
-      window.location.reload(true);
-    });
+      .then((res) => {
+        debugger;
+        if (res.ok) return res.json();
+      })
+      .then((response) => {
+        debugger;
+        window.location.reload(true);
+      });
+  });
 });
 
 const deleteButton = document.querySelector("#delete-button");

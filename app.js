@@ -21,7 +21,16 @@ app.get("/", (req, res) => {
   db.collection("destinations")
     .find()
     .toArray()
-    .then((results) => res.render("index.ejs", { destinations: results }))
+    .then((results) => {
+      results.map((res, index) => {
+        res.modalId = `modal-${res._id}`;
+        res.entityIndex = index;
+
+        return res;
+      });
+
+      res.render("index.ejs", { destinations: results });
+    })
     .catch((err) => res.render("Yo an errror occured", err));
 });
 

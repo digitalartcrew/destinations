@@ -57,7 +57,7 @@
                             <p class="card-text"><%= destinations[i].description %></p>
                             <div class="buttons_container">
                               
-                                <button data-bs-toggle="modal" data-bs-target="#updateModal" class="btn btn-warning">Update</button>
+                                <button data-bs-toggle="modal" data-bs-target="#<%= destinations[i].modalId %>" class="btn btn-warning">Update</button>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                 Delete
@@ -83,7 +83,7 @@
                                 </div><!-- Button trigger modal -->
 
                                 <!-- Modal -->
-                                <div class="modal fade" data-id="<%= destinations[i]._id %>" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" data-id="<%= destinations[i]._id %>" id="<%= destinations[i].modalId %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -94,28 +94,28 @@
                                       <form id="updateForm">
                                         <div class="form-group">
                                           <label for="title">Title</label>
-                                          <input type="text" class="form-control" id="update-title" aria-describedby="title" placeholder="">
+                                          <input type="text" class="form-control update-title" aria-describedby="title" placeholder="">
                                         </div>
 
                                         <div class="form-group">
                                           <label for="location">Location</label>
-                                          <input type="text" class="form-control" id="update-location" aria-describedby="location" placeholder="">
+                                          <input type="text" class="form-control update-location" aria-describedby="location" placeholder="">
                                         </div>
 
                                         <div class="form-group">
                                           <label for="description">Description</label>
-                                          <textarea type="text" class="form-control" id="update-description" aria-describedby="description" placeholder=""></textarea>
+                                          <textarea type="text" class="form-control update-description" aria-describedby="description" placeholder=""></textarea>
                                         </div>
 
                                         <div class="form-group">
                                           <label for="imageUrl">Image Url</label>
-                                          <input type="text" class="form-control" id="update-imageUrl" aria-describedby="imageUrl" placeholder="">
+                                          <input type="text" class="form-control update-imageUrl" aria-describedby="imageUrl" placeholder="">
                                         </div>
                                       </form>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                      <button data-id="<%= destinations[i]._id %>" id="update-button" type="button" class="btn btn-primary">Save</button>
+                                      <button data-id="<%= destinations[i]._id %>" data-entity-index="<%= destinations[i].entityIndex %>" type="button" class="btn btn-primary update">Save</button>
                                     </div>
                                   </div>
                                 </div>
