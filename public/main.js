@@ -22,29 +22,12 @@ addDestinationForm.addEventListener("submit", (e) => {
     });
 });
 
-// Current on the modal
-// const myModalEl = document.getElementById("updateModal");
-
-// myModalEl.addEventListener("show.bs.modal", async (event) => {
-//   debugger;
-//   const id = event.target.getAttribute("data-id");
-//   const data = await fetch(`/api/destination/${id}`);
-//   const results = await data.json();
-//   const { title, location, description, imageUrl } = results.data;
-
-//   document.querySelector("input#update-title").value = title;
-//   document.querySelector("input#update-location").value = location;
-//   document.querySelector("textarea#update-description").value = description;
-//   document.querySelector("input#update-imageUrl").value = imageUrl;
-// });
-
 const updateBtn = document.querySelectorAll(".update");
 
 updateBtn?.forEach((button) => {
   button.addEventListener("click", (e) => {
     const id = e.target.getAttribute("data-id");
     const idx = e.target.getAttribute("data-entity-index");
-    debugger;
 
     const title = document.querySelectorAll(".update-title")[idx].value;
     const location = document.querySelectorAll(".update-location")[idx].value;
@@ -52,37 +35,35 @@ updateBtn?.forEach((button) => {
       .value;
     const imageUrl = document.querySelectorAll(".update-imageUrl")[idx].value;
 
-    debugger;
-
     fetch(`/api/destination/update/${id}`, {
       method: "put",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, location, description, imageUrl }),
     })
       .then((res) => {
-        debugger;
         if (res.ok) return res.json();
       })
       .then((response) => {
-        debugger;
         window.location.reload(true);
       });
   });
 });
 
-const deleteButton = document.querySelector("#delete-button");
+const deleteButton = document.querySelectorAll(".delete");
 
-deleteButton?.addEventListener("click", (e) => {
-  const id = e.target.getAttribute("data-id");
+deleteButton.forEach((button) => {
+  button?.addEventListener("click", (e) => {
+    const id = e.target.getAttribute("data-id");
 
-  fetch(`/api/destination/delete/${id}`, {
-    method: "delete",
-    headers: { "Content-Type": "application/json" },
-  })
-    .then((res) => {
-      if (res.ok) return res.json();
+    fetch(`/api/destination/delete/${id}`, {
+      method: "delete",
+      headers: { "Content-Type": "application/json" },
     })
-    .then((data) => {
-      window.location.reload();
-    });
+      .then((res) => {
+        if (res.ok) return res.json();
+      })
+      .then((data) => {
+        window.location.reload();
+      });
+  });
 });

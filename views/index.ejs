@@ -59,12 +59,12 @@
                               
                                 <button data-bs-toggle="modal" data-bs-target="#<%= destinations[i].modalId %>" class="btn btn-warning">Update</button>
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<%= destinations[i].modalId %>">
                                 Delete
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="<%= destinations[i].modalId %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog">
                                     <div class="modal-content">
                                       <div class="modal-header">
@@ -76,7 +76,7 @@
                                       </div> -->
                                       <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button data-id="<%= destinations[i]._id %>" id="delete-button" type="button" class="btn btn-primary">Delete</button>
+                                        <button data-id="<%= destinations[i]._id %>" type="button" class="btn btn-primary delete">Delete</button>
                                       </div>
                                     </div>
                                   </div>
