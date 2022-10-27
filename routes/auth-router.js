@@ -33,8 +33,7 @@ router.post(
   "/login",
   passport.authenticate("local-login"),
   function (req, res) {
-    res.json(req.user);
-    console.log("Inside Auth JS USER:", req.user);
+    res.redirect("/");
   }
 );
 
@@ -43,7 +42,8 @@ router.post(
   "/signup/",
   passport.authenticate("local-signup", { session: false }),
   (req, res, next) => {
-    res.json({ user: req.user });
+    res.redirect("/");
+    // res.json({ user: req.user });
   }
 );
 
