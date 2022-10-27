@@ -15,30 +15,6 @@ module.exports = function (passport) {
   });
 
   passport.use(
-    "local-signup",
-    new LocalStrategy(
-      {
-        username: "username",
-        password: "password",
-      },
-      async (username, password, done) => {
-        try {
-          // check if user exists
-          const userExists = await User.findOne({ username: username });
-          if (userExists) {
-            return done(null, false);
-          }
-          // Create a new user with the user data provided
-          const user = await new User({ username, password });
-          return done(null, user);
-        } catch (error) {
-          done(error);
-        }
-      }
-    )
-  );
-
-  passport.use(
     "local-login",
     new LocalStrategy(function (username, password, done) {
       User.findOne(

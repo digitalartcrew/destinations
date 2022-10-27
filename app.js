@@ -62,10 +62,6 @@ app.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-app.get("/api/unsplash", () => {
-  return;
-});
-
 app.use("/api", DestinationRouter);
 app.use("/auth", AuthRouter);
 
