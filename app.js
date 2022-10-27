@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3000;
-const { DestinationRouter } = require("./routes");
+const { DestinationRouter, AuthRouter } = require("./routes");
 const db = require("./db");
 
 // render server side template
@@ -36,7 +36,16 @@ app.get("/", (req, res) => {
     .catch((err) => res.render("Yo an errror occured", err));
 });
 
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+app.get("/signup", (req, res) => {
+  res.render("signup");
+});
+
 app.use("/api", DestinationRouter);
+app.use("/auth", AuthRouter);
 
 app.listen(PORT, () => {
   console.log(`App listening on PORT: ${PORT}`);
