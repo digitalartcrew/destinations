@@ -9,18 +9,18 @@ passport.use(
   "local-signup",
   new LocalStrategy(
     {
-      username: "email",
+      username: "username",
       password: "password",
     },
-    async (email, password, done) => {
+    async (username, password, done) => {
       try {
         // check if user exists
-        const userExists = await User.findOne({ email: email });
+        const userExists = await User.findOne({ username: username });
         if (userExists) {
           return done(null, false);
         }
         // Create a new user with the user data provided
-        const user = await User.create({ email, password });
+        const user = await User.create({ username, password });
         return done(null, user);
       } catch (error) {
         done(error);
@@ -29,16 +29,14 @@ passport.use(
   )
 );
 
-// router.post(
-//   "/login",
-//   passport.authenticate("local-login", { session: false }),
-//   (req, res, next) => {
-//     // login
-//     res.json({
-//       user: req.user,
-//     });
-//   }
-// );
+router.post(
+  "/login",
+  passport.authenticate("local-login"),
+  function (req, res) {
+    res.json(req.user);
+    console.log("Inside Auth JS USER:", req.user);
+  }
+);
 
 // sign up successful
 router.post(

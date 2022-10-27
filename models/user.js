@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 const bcrypt = require("bcryptjs");
 
 const UserSchema = new Schema({
-  email: {
+  username: {
     type: String,
     required: true,
   },
@@ -30,12 +30,9 @@ UserSchema.pre("save", async function (next) {
   }
 });
 
-UserSchema.methods.matchPassword = async () => {
-  try {
-    return await bcrypt.compare(password, this.password);
-  } catch (error) {
-    throw new Error(error);
-  }
+// checking if password is valid
+UserSchema.methods.validPassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
 };
 
 module.exports = mongoose.model("User", UserSchema);

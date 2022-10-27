@@ -5,6 +5,24 @@ const PORT = process.env.PORT || 3000;
 const { DestinationRouter, AuthRouter } = require("./routes");
 const db = require("./db");
 
+//Cookie and Session
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+app.use(
+  session({
+    secret: "awesome",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+const passport = require("passport");
+require("./config/passport")(passport); //passport configuration
+
+app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
+
 // render server side template
 app.set("view engine", "ejs");
 app.use(express.static("public"));
@@ -42,6 +60,10 @@ app.get("/login", (req, res) => {
 
 app.get("/signup", (req, res) => {
   res.render("signup");
+});
+
+app.get("/api/unsplash", () => {
+  return;
 });
 
 app.use("/api", DestinationRouter);
