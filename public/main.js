@@ -67,3 +67,11 @@ deleteButton.forEach((button) => {
       });
   });
 });
+
+const logOut = async () => {
+  await fetch("/logout", {
+    method: "POST",
+  });
+
+  location.replace("/login");
+};

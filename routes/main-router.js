@@ -17,9 +17,10 @@ router.get("/", (req, res) => {
       });
 
       console.log("User: ", req.user.username);
+
       res.render("index.ejs", {
         destinations: results,
-        username: req.user.username,
+        username: req.user.username || "No User",
       });
     })
     .catch((err) => res.render("Yo an errror occured", err));
@@ -35,7 +36,7 @@ router.get("/signup", (req, res) => {
 
 router.post("/logout", (req, res) => {
   req.logOut();
-  res.send(200);
+  res.redirect("/login");
 });
 
 router.get("/loggedin", () => {
