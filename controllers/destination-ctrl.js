@@ -6,7 +6,7 @@ const createDestination = (req, res) => {
   if (!body) {
     return res.status(400).json({
       success: false,
-      error: "You must provide a destination small change",
+      error: "You must provide a destination",
     });
   }
 
