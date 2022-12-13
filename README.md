@@ -2,8 +2,6 @@
 
 CRUD application built using NodeJS, React, MongoDB and Express
 
-Link to project: https://vacation-destinations-db.herokuapp.com/
-
 Create an .env add add the following:
 
 PORT=42373
